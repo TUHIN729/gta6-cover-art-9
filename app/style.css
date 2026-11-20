@@ -1,0 +1,130 @@
+/* Golden Hour Vice — warm editorial chrome for the cover editor. */
+:root {
+  --cream: #f7ead0;
+  --paper: #fdf6e3;
+  --teal: #0e3a3a;
+  --teal-soft: #145050;
+  --gold: #e8a020;
+  --gold-soft: #f2c14e;
+  --ink: #241a12;
+  --line: #e0c896;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.app {
+  display: flex;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: flex-start;
+}
+.controls { flex: 0 0 380px; }
+.stage { flex: 1 1 auto; min-width: 0; position: sticky; top: 20px; }
+h1 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  line-height: 1.05;
+  color: var(--teal);
+  margin: 0 0 4px;
+}
+.tagline { margin: 0 0 16px; color: #5a4632; }
+h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin: 18px 0 8px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 4px;
+}
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.row button, .actions button {
+  border: 2px solid var(--teal);
+  background: var(--paper);
+  color: var(--teal);
+  font: 700 13px/1.2 inherit;
+  padding: 9px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.row button.on, .actions button#export {
+  background: var(--teal);
+  color: var(--gold-soft);
+}
+.actions { display: flex; gap: 8px; margin-top: 10px; }
+label { display: block; margin: 8px 0; font-weight: 700; font-size: 13px; }
+label input[type="text"], label select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  background: #fffdf6;
+  font: inherit;
+  color: var(--ink);
+}
+label input[type="file"] { display: block; margin-top: 4px; font-weight: 400; }
+.panel-card {
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  background: var(--paper);
+  cursor: pointer;
+}
+.panel-card.on { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-soft); }
+.panel-card strong { color: var(--teal); }
+.panel-card button {
+  margin-top: 6px;
+  border: 1px solid var(--teal);
+  background: transparent;
+  color: var(--teal);
+  font: 700 12px inherit;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.hint { font-size: 13px; color: #6b5636; }
+.slider input[type="range"] { width: 70%; vertical-align: middle; }
+.check { font-weight: 400; }
+#status { min-height: 1.4em; font-size: 13px; color: var(--teal-soft); }
+#preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 3px solid var(--teal);
+  border-radius: 4px;
+  box-shadow: 0 12px 32px rgba(36, 26, 18, 0.35);
+  background: #111;
+  cursor: grab;
+  touch-action: none;
+}
+#preview:active { cursor: grabbing; }
+.caption { text-align: center; font-size: 13px; color: #6b5636; }
+/* Screenshot mode: cover only, edge to edge, no editor chrome. */
+body.shot-cover { background: #f7ead0; }
+body.shot-cover .app { display: block; max-width: none; padding: 0; }
+body.shot-cover .controls, body.shot-cover .caption { display: none; }
+body.shot-cover .stage { position: static; }
+body.shot-cover #preview {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .controls { flex-basis: auto; width: 100%; }
+  .stage { position: static; width: 100%; }
+}
